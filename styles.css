@@ -22,6 +22,8 @@ main {
   display: inline-block;
   width: 80px;
   height: 34px;
+
+  transform: scale(2);
 }
 
 .container input {
