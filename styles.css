@@ -15,8 +15,11 @@
   --shadow-01: #80808077;
   --shadow-02: #ffffff22;
   --shadow-03: #555555;
+  --white: #ffffff;
+  --background-day: linear-gradient(skyblue, cadetblue);
+  --background-night: linear-gradient(-45deg, #222, #000030);
 }
-main {
+main{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,9 +29,9 @@ main {
   transition: .4s;
 }
 .dark{
-  background: #111;
+  background: var(--dark);
 }
-.container {
+.container{
   position: relative;
   display: inline-block;
   width: 80px;
@@ -37,16 +40,16 @@ main {
   -webkit-transform: scale(3);
   transform: scale(3);
 }
-.container input {
+.container input{
   opacity: 0;
   width: 0;
   height: 0;
 }
-.slider {
+.slider{
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background: linear-gradient(skyblue, cadetblue);
+  background: var(--background-day);
   box-shadow: inset 0 0 3px;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -56,7 +59,7 @@ main {
   overflow: hidden;
   z-index: 1;
 }
-.slider::before {
+.slider::before{
   position: absolute;
   content: "";
   height: 26px;
@@ -73,12 +76,12 @@ main {
     0 0 0 20px var(--shadow-02),
     10px 0 0 20px var(--shadow-02);
 }
-input:checked + .slider {
-  background: linear-gradient(-45deg, #222, #000030);
-  filter: drop-shadow(0 0 2px #fff);
+input:checked + .slider{
+  background: var(--background-night);
+  filter: drop-shadow(0 0 2px var(--white));
 }
 
-input:checked + .slider:before {
+input:checked + .slider:before{
   background: var(--moon);
   -webkit-transform: translateX(180%);
   -ms-transform: translateX(180%);
@@ -91,7 +94,7 @@ input:checked + .slider:before {
     -10px 0 0 20px var(--shadow-02);
 }
 
-.slider::after {
+.slider::after{
   content: "";
   position: absolute;
   background: var(--crater);
@@ -111,7 +114,7 @@ input:checked + .slider:before {
   filter: saturate(.75);
 }
 
-input:checked + .slider::after {
+input:checked + .slider::after{
   -webkit-transform: scale(1) rotate(-24deg);
   transform: scale(1) rotate(-24deg);
 }
@@ -144,7 +147,8 @@ input:checked + .slider .star:last-child{
   -webkit-transform: scale(.4) translate(225%, 300%);
   transform: scale(.4) translate(225%, 300%);
 }
-input:checked + .slider .star::before, .star::after{
+input:checked + .slider .star::before,
+input:checked + .slider .star::after{
   content: "";
   position: absolute;
   width: 0;
